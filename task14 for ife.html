@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<ul id="aqi-list">
+			<li>demo</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var aqidata=[
+			["北京",90],
+			["上海",50],
+			["福州",10],
+			["广州",50],
+			["成都",90],
+			["西安",100]
+		];
+		//there is a self-call function containing three functions 
+		(function  () {
+			
+			//1.select eligible elements in aidata by filter method into catch_aqidata
+			var catch_aqidata=aqidata.filter(function(element){
+				return(element[1]>=50);
+			});
+
+			//2.sorting catch_aqidata by sort method 
+			catch_aqidata.sort(function(x,y){
+				if (y[1]>x[1]) 
+					return 1;
+			});
+
+			//3.add elements ,contents from catch_aqidata, into li by innerHTML  ;  attention: variable i must be defined out of forEach function to promise i++
+
+			i=1;
+			catch_aqidata.forEach(function(element){
+					
+					document.getElementById("aqi-list").innerHTML+="<li>"+"第"+i+":"+element[0]+"质量为"+element[1]+"</li>";
+					i++;
+					alert(element[0]);
+			});
+		})();
+
+
+
+
+
+	</script>
+</html>
